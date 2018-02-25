@@ -33,12 +33,12 @@ docker exec --tty "$(cat ${container_id})" env TERM=xterm ansible --version
 docker exec --tty "$(cat ${container_id})" env TERM=xterm ansible-galaxy install jtyr.config_encoder_filters,master,config_encoder_filters
 
 # Basic role syntax check
-docker exec --tty "$(cat ${container_id})" env TERM=xterm ansible-playbook /etc/ansible/roles/${module}/tests/test.yml --syntax-check
+docker exec --tty "$(cat ${container_id})" env TERM=xterm ansible-playbook /etc/ansible/roles/${module}/tests/test.yaml --syntax-check
 
 # Run the role/playbook with ansible-playbook
-docker exec --tty "$(cat ${container_id})" env TERM=xterm ansible-playbook /etc/ansible/roles/${module}/tests/test.yml
+docker exec --tty "$(cat ${container_id})" env TERM=xterm ansible-playbook /etc/ansible/roles/${module}/tests/test.yaml
 
-docker exec "$(cat ${container_id})" ansible-playbook /etc/ansible/roles/${module}/tests/test.yml \
+docker exec "$(cat ${container_id})" ansible-playbook /etc/ansible/roles/${module}/tests/test.yaml \
  | grep -q 'changed=0.*failed=0' \
 && (echo 'Idempotence test: pass' && exit 0) \
 || (echo 'Idempotence test: fail' && exit 1) \
