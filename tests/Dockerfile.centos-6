@@ -9,7 +9,7 @@ yum -y --nogpgcheck localinstall epel-release-6-8.noarch.rpm; \
 yum clean all
 
 # Install Ansible
-RUN yum -y install ansible
+RUN yum -y install ansible initscripts
 
 # Create Ansible configuration file
 RUN echo -e "[defaults]\nroles_path = /etc/ansible/roles\nretry_files_enabled = False" > /etc/ansible/ansible.cfg
@@ -20,4 +20,4 @@ RUN echo -e "[local]\nlocalhost ansible_connection=local" > /etc/ansible/hosts
 # Install role dependencies
 # ...
 
-CMD ["/usr/sbin/init"]
+#CMD ["/usr/sbin/init"]
