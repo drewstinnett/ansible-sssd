@@ -12,8 +12,8 @@ env:
     - distribution: centos
       version: 7
 # Testing hangs here, TODO:  Investigate
-#   - distribution: centos
-#     version: 6
+    - distribution: centos
+      version: 6
 
 services:
   - docker
